@@ -57,7 +57,7 @@ class _AddProductFormState extends State<AddProductForm> {
                 ),
                 SizedBox(height: 24.0),
                 Text(
-                  'Nome:',
+                  'Preço:',
                   style: TextStyle(
                     color: Color(0xFFECEFF1),
                     fontSize: 22.0,
@@ -79,57 +79,59 @@ class _AddProductFormState extends State<AddProductForm> {
               ? Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: CircularProgressIndicator(
-                    valueColor:
-                        AlwaysStoppedAnimation<Color>(Color(0xFFF57C00)),
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Colors.orange,
+                    ),
                   ),
                 )
               : Container(
                   width: double.maxFinite,
                   child: ElevatedButton(
                     style: ButtonStyle(
-                        backgroundColor: Colors.orange,
-                        shape: MaterialStateProperty.all(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
-                          )
-                        )
+                      backgroundColor: MaterialStateProperty.all(
+                        Colors.orange,
                       ),
-                      onPressed: () async {
-                        widget.nameFocusNode.unfocus();
-                        widget.priceFocusNode.unfocus();
-
-                        if (_addProductFormKey.currentState!.validate()) {
-                          setState(() {
-                            _isProcessing = true;
-                          });
-
-                          await Database.addProduct(
-                            name: _nameController.text,
-                            price: _priceController.text,
-                          );
-
-                          setState(() {
-                            _isProcessing = false;
-                          });
-
-                          Navigator.of(context).pop();
-                        }
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                          top: 16.0,
-                          bottom: 16.0
-                        ),
-                        child: Text(
-                          'Adicionar',
-                          style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xFFECEFF1),
-                            letterSpacing: 2,
-                          ),
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
                       ),
+                    ),
+                    onPressed: () async {
+                      widget.nameFocusNode.unfocus();
+                      widget.priceFocusNode.unfocus();
+
+                      if (_addProductFormKey.currentState!.validate()) {
+                        setState(() {
+                          _isProcessing = true;
+                        });
+
+                        await Database.addProduct(
+                          name: _nameController.text,
+                          price: _priceController.text,
+                        );
+
+                        setState(() {
+                          _isProcessing = false;
+                        });
+
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
+                      child: Text(
+                        'Adicionar',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFFECEFF1),
+                          letterSpacing: 2,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud/widgets/products_list.dart';
+import 'package:flutter_crud/screens/add_screen_products.dart';
 
 class HomeScreenProducts extends StatefulWidget {
   const HomeScreenProducts({Key? key}) : super(key: key);
@@ -34,7 +35,11 @@ class _HomeScreenProductsState extends State<HomeScreenProducts> {
         backgroundColor: Colors.orange,
         foregroundColor: Colors.black,
         onPressed: () {
-          // Respond to button press
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => AddScreen(),
+            ),
+          );
         },
         child: Icon(Icons.add),
       ),

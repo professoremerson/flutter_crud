@@ -27,16 +27,14 @@ class AddScreen extends StatelessWidget {
         ),
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.only(
-              left: 16.0,
-              right: 16.0,
-              bottom: 20.0,
-            ),
-            child: AddProductForm(
-              nameFocusNode = _nameFocusNode,
-              priceFocusNode = _priceFocusNode,
-            ),
-          ),
+              padding: const EdgeInsets.only(
+                left: 16.0,
+                right: 16.0,
+                bottom: 20.0,
+              ),
+              child: AddProductForm(
+                  nameFocusNode: _nameFocusNode,
+                  priceFocusNode: _priceFocusNode)),
         ),
       ),
     );
